@@ -23,7 +23,7 @@
     <groupId>net.sourceforge.jwebunit</groupId>
     <artifactId>jwebunit</artifactId>
     <name>JWebUnit</name>
-    <version>3.4-atlassian-1-m01-SNAPSHOT</version>
+    <version>3.4-atlassian-1-m01</version>
     <packaging>pom</packaging>
     <description>
         JWebUnit is a Java framework that facilitates creation of

@@ -23,7 +23,7 @@
     <groupId>net.sourceforge.jwebunit</groupId>
     <artifactId>jwebunit</artifactId>
     <name>JWebUnit</name>
-    <version>3.4-SNAPSHOT</version>
+    <version>3.4-atlassian-1-m01-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>
         JWebUnit is a Java framework that facilitates creation of
@@ -201,6 +201,11 @@
             <name>LGPL License</name>
             <url>${topDirectoryLocation}/LICENSE.txt</url>
         </license>
+        <license>
+            <name>LGPL 2.1 License</name>
+            <url>http://www.gnu.org/licenses/lgpl-2.1.txt</url>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
     <scm>
         <connection>scm:git:https://github.com/JWebUnit/jwebunit.git</connection>
@@ -290,7 +295,7 @@
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <preparationGoals>clean install</preparationGoals>
-                        <goals>deploy site site:stage</goals>
+                        <!--<goals>deploy site site:stage</goals>-->
                         <mavenExecutorId>forked-path</mavenExecutorId>
                     </configuration>
                 </plugin>
@@ -304,15 +309,15 @@
                     <artifactId>exec-maven-plugin</artifactId>
                     <version>1.2.1</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.3</version>
-                    <configuration>
-                      <skipDeploy>true</skipDeploy>
-                      <outputEncoding>UTF-8</outputEncoding>
-                    </configuration>
-                </plugin>
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-site-plugin</artifactId>-->
+                    <!--<version>3.3</version>-->
+                    <!--<configuration>-->
+                      <!--<skipDeploy>true</skipDeploy>-->
+                      <!--<outputEncoding>UTF-8</outputEncoding>-->
+                    <!--</configuration>-->
+                <!--</plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
@@ -375,38 +380,68 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>-->
+              <!--<groupId>org.apache.maven.plugins</groupId>-->
+              <!--<artifactId>maven-site-plugin</artifactId>-->
+              <!--<executions>-->
+                <!--<execution>-->
+                  <!--<id>stage-for-scm-publish</id>-->
+                  <!--<phase>post-site</phase>-->
+                  <!--<goals>-->
+                    <!--<goal>stage</goal>-->
+                  <!--</goals>-->
+                  <!--<configuration>-->
+                    <!--<skipDeploy>false</skipDeploy>&lt;!&ndash; MSITE-652: configuration won't be necessary with m-site-p 3.2 &ndash;&gt;-->
+                  <!--</configuration>-->
+                <!--</execution>-->
+              <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+              <!--<groupId>org.apache.maven.plugins</groupId>-->
+              <!--<artifactId>maven-scm-publish-plugin</artifactId>-->
+              <!--<version>1.1</version>-->
+              <!--<configuration>-->
+                <!--<scmBranch>gh-pages</scmBranch>-->
+              <!--</configuration>-->
+              <!--<executions>-->
+                <!--<execution>-->
+                  <!--<id>scm-publish</id>-->
+                  <!--<phase>site-deploy</phase>-->
+                  <!--<goals>-->
+                    <!--<goal>publish-scm</goal>-->
+                  <!--</goals>-->
+                <!--</execution>-->
+              <!--</executions>-->
+            <!--</plugin>-->
             <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-site-plugin</artifactId>
-              <executions>
-                <execution>
-                  <id>stage-for-scm-publish</id>
-                  <phase>post-site</phase>
-                  <goals>
-                    <goal>stage</goal>
-                  </goals>
-                  <configuration>
-                    <skipDeploy>false</skipDeploy><!-- MSITE-652: configuration won't be necessary with m-site-p 3.2 -->
-                  </configuration>
-                </execution>
-              </executions>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-scm-publish-plugin</artifactId>
-              <version>1.1</version>
-              <configuration>
-                <scmBranch>gh-pages</scmBranch>
-              </configuration>
-              <executions>
-                <execution>
-                  <id>scm-publish</id>
-                  <phase>site-deploy</phase>
-                  <goals>
-                    <goal>publish-scm</goal>
-                  </goals>
-                </execution>
-              </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-license</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>${user.dir}</directory>
+                                    <includes>
+                                        <include>LICENSE.txt</include>
+                                        <include>NOTICE.txt</include>
+                                        <include>license.txt</include>
+                                        <include>notice.txt</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -597,20 +632,13 @@
         </plugins>
     </reporting>
     <distributionManagement>
-        <site>
-            <id>github</id>
-            <name>JWebUnit WebSite - GitHub</name>
-            <url>scm:git:git@github.com:JWebUnit/jwebunit.git</url>
-        </site>
-        <snapshotRepository>
-            <id>sonatype-nexus</id>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-            <name>Sonatype Nexus OSS Snapshot Repository</name>
-        </snapshotRepository>
         <repository>
-            <id>sonatype-nexus</id>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-            <name>Sonatype Nexus OSS Staging Repository</name>
+            <id>atlassian-3rdparty</id>
+            <url>https://packages.atlassian.com/maven/3rdparty</url>
         </repository>
+        <snapshotRepository>
+            <id>atlassian-3rdparty-snapshot</id>
+            <url>https://packages.atlassian.com/maven/3rdparty-snapshot</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>

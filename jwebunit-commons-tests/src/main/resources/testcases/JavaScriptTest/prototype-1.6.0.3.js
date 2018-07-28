@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with JWebUnit.  If not, see <http://www.gnu.org/licenses/>.
+ * along with JWebUnit.  If not, see <http://www.gnu.org/licenses />.
  */
 /*  Prototype JavaScript framework, version 1.6.0.3
  *  (c) 2005-2008 Sam Stephenson

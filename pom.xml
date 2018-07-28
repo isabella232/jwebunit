@@ -208,8 +208,8 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:ssh://github.com/atlassian/jwebunit.git</connection>
-        <developerConnection>scm:git:ssh://github.com/atlassian/jwebunit.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/atlassian/jwebunit.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/atlassian/jwebunit.git</developerConnection>
         <url>https://github.com/atlassian/jwebunit</url>
       <tag>jwebunit-3.4-atlassian-1-m01</tag>
   </scm>

@@ -329,6 +329,7 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <version>3.0</version>
                 <configuration>
+                    <skip>true</skip>
                     <header>${topDirectoryLocation}/src/license/header.txt</header>
                     <aggregate>false</aggregate>
                     <encoding>${project.build.sourceEncoding}</encoding>

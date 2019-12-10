@@ -1,9 +1,6 @@
+os: linux
+dist: bionic
 language: java
-sudo: false
-install: true
-
-jdk:
-  - oraclejdk7
 
 script:
   - mvn verify -e -V

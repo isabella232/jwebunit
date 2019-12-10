@@ -22,7 +22,7 @@
   <parent>
     <artifactId>jwebunit</artifactId>
     <groupId>net.sourceforge.jwebunit</groupId>
-    <version>3.4-atlassian-3</version>
+    <version>3.4-atlassian-4-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>

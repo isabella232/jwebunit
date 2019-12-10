@@ -11,7 +11,7 @@ continuously refactored to remove duplication and other bad smells in the test
 code. JWebUnit is the result of these refactorings.
 We are using HtmlUnit (htmlunit.sourceforge.net).
 
-Changes in this version are available here:
+Changes in this version are available here: 
 https://jwebunit.github.io/jwebunit/changes-report.html
 
 Have fun!

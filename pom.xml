@@ -23,7 +23,7 @@
     <groupId>net.sourceforge.jwebunit</groupId>
     <artifactId>jwebunit</artifactId>
     <name>JWebUnit</name>
-    <version>3.4-atlassian-2</version>
+    <version>3.4-atlassian-3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>
         JWebUnit is a Java framework that facilitates creation of
@@ -206,7 +206,7 @@
         <connection>scm:git:https://github.com/atlassian/jwebunit.git</connection>
         <developerConnection>scm:git:https://github.com/atlassian/jwebunit.git</developerConnection>
         <url>https://github.com/atlassian/jwebunit</url>
-      <tag>jwebunit-3.4-atlassian-2</tag>
+      <tag>HEAD</tag>
   </scm>
     <organization>
         <name>JWebUnit</name>

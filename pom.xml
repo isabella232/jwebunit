@@ -309,8 +309,9 @@
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.3</version>
                     <configuration>
-                      <skipDeploy>true</skipDeploy>
-                      <outputEncoding>UTF-8</outputEncoding>
+                        <skipDeploy>true</skipDeploy>
+                        <skip>true</skip>
+                        <outputEncoding>UTF-8</outputEncoding>
                     </configuration>
                 </plugin>
                 <plugin>
